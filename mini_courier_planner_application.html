@@ -4,13 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini-Courier Planner - Capstone Interactive Suite</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Katex for Math rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
@@ -28,8 +24,6 @@
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
-
-    <!-- Header Navigation -->
     <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-50 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
@@ -55,10 +49,8 @@
         </div>
     </header>
 
-    <!-- Main Container -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
         
-        <!-- Navigation Tabs -->
         <div class="border-b border-slate-200 mb-6 bg-white rounded-t-xl px-4 pt-2 shadow-sm">
             <nav class="flex space-x-8 overflow-x-auto" id="tabContainer">
                 <button onclick="switchTab('phase1')" id="tab-phase1" class="tab-button tab-active py-3 px-1 text-sm font-medium flex items-center space-x-2">
@@ -84,7 +76,6 @@
             </nav>
         </div>
 
-        <!-- Global Control Bar -->
         <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 mb-6 grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
             <div>
                 <label class="block text-xs font-semibold text-slate-500 uppercase mb-1">Max Vehicle Capacity ($W$)</label>
@@ -116,7 +107,6 @@
             </div>
         </div>
 
-        <!-- TAB CONTENT: PHASE 1 ARCHITECTURE -->
         <div id="content-phase1" class="tab-content space-y-6">
             <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
                 <h2 class="text-xl font-bold text-slate-900 mb-2">System Design & Algorithmic Pipeline Architecture</h2>
@@ -124,7 +114,6 @@
                     The Mini-Courier Planner combines four core algorithmic paradigms into a sequential optimization engine. The problem requires prioritizing packages under capacity constraints and finding the optimal route for execution.
                 </p>
 
-                <!-- Flow Diagram -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
                     <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl text-center flex flex-col justify-between">
                         <div>
@@ -163,7 +152,6 @@
                     </div>
                 </div>
 
-                <!-- Mathematical Formulation -->
                 <div class="mt-8 bg-slate-50 border border-slate-200 p-5 rounded-xl">
                     <h3 class="font-bold text-slate-800 mb-3 text-sm uppercase">Formal Problem Formulation</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
@@ -186,10 +174,8 @@
             </div>
         </div>
 
-        <!-- TAB CONTENT: PHASE 2 KNAPSACK & SORTING -->
         <div id="content-phase2" class="tab-content hidden space-y-6">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Parcel Input List -->
                 <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 lg:col-span-1 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-4">
@@ -211,7 +197,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-100" id="parcelTableBody">
-                                    <!-- Dynamic Rows Inserted Here -->
+                                   
                                 </tbody>
                             </table>
                         </div>
@@ -223,7 +209,6 @@
                     </div>
                 </div>
 
-                <!-- DP Table & Results -->
                 <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 lg:col-span-2 space-y-4">
                     <div class="flex items-center justify-between">
                         <h3 class="font-bold text-slate-900 text-base">Dynamic Programming Execution Matrix</h3>
@@ -235,14 +220,12 @@
                         Recurrence relation: $DP[i][c] = \max(DP[i-1][c], v_i + DP[i-1][c - w_i])$. Highlighted cells represent the optimal backtrack trajectory.
                     </p>
 
-                    <!-- DP Matrix Render -->
                     <div class="overflow-x-auto border border-slate-200 rounded-lg max-h-64">
                         <table class="w-full text-xs font-mono text-center" id="dpMatrixTable">
-                            <!-- DP Matrix rendered dynamically -->
+                      
                         </table>
                     </div>
 
-                    <!-- Selected Package Summary -->
                     <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
                         <div>
                             <span class="text-slate-500 block">Total Selected Weight</span>
@@ -265,21 +248,17 @@
             </div>
         </div>
 
-        <!-- TAB CONTENT: PHASE 3 ROUTE & GRAPH -->
         <div id="content-phase3" class="tab-content hidden space-y-6">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Graph Matrix Editor -->
                 <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 lg:col-span-1">
                     <h3 class="font-bold text-slate-900 text-base mb-2">Hub Distance Matrix ($\text{km}$)</h3>
                     <p class="text-slate-500 text-xs mb-4">Adjacency matrix defining shortest direct links between locations.</p>
                     <div class="overflow-x-auto">
                         <table class="w-full text-xs font-mono" id="adjMatrixTable">
-                            <!-- Dynamically generated Adjacency Matrix -->
                         </table>
                     </div>
                 </div>
 
-                <!-- Shortest Path & Route Output -->
                 <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 lg:col-span-2 space-y-4">
                     <h3 class="font-bold text-slate-900 text-base">Route Construction (Dijkstra + Nearest-Neighbor TSP)</h3>
                     
@@ -290,7 +269,7 @@
                                 <span>Dijkstra Shortest Distances from Hub</span>
                             </h4>
                             <div id="dijkstraOutput" class="text-xs space-y-1 font-mono text-slate-700">
-                                <!-- Dijkstra distances output -->
+         
                             </div>
                         </div>
 
@@ -300,16 +279,15 @@
                                 <span>Final Delivery Route Sequence</span>
                             </h4>
                             <div id="tspRouteOutput" class="text-xs space-y-1 font-mono text-slate-700">
-                                <!-- Route sequence output -->
+                             
                             </div>
                         </div>
                     </div>
 
-                    <!-- Step by Step Tour Log -->
                     <div class="border border-slate-200 rounded-xl p-4">
                         <h4 class="font-semibold text-slate-800 text-xs uppercase mb-3">Delivery Execution Log</h4>
                         <ol id="routeStepList" class="space-y-2 text-xs text-slate-600 font-mono">
-                            <!-- Route execution steps -->
+                    
                         </ol>
                     </div>
                 </div>
